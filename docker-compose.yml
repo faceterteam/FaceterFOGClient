@@ -33,7 +33,7 @@ services:
       Serilog__WriteTo__0__Name: Console
       StreamCreationService:PublicFaceRecognitionApi: http://recognition-webapi/
       StreamCreationService:callbackUrl: http://demo-event-api/event
-    image: faceterteam/recognition.demo.webapi:v1.0.16
+    image: faceterteam/recognition.demo.webapi:v1.0.17
     networks:
       backend-network: {}
       demo-network: {}
@@ -43,7 +43,7 @@ services:
   demo-client:
     environment:
       VUE_APP_API_ENDPOINT: http://localhost/api/v1/
-    image: faceterteam/recognition.demo.webclient:v1.1.1
+    image: faceterteam/recognition.demo.webclient:v1.1.4
     networks:
       backend-network: {}
       demo-network: {}
@@ -224,7 +224,7 @@ services:
       PERSONFINDER_MONGO_URI: mongodb://mongo:27017
       RECOGNITION_MONGO_HOST: mongodb://mongo:27017
       RECOGNITION_PM_MONGO_HOST: mongodb://mongo:27017
-    image: faceterteam/recognition.personfinder:v1.0.2
+    image: faceterteam/recognition.personfinder:v1.0.3
     networks:
       backend-network: {}
       mongo-network: {}
