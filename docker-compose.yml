@@ -10,7 +10,7 @@
 services:
   clickhouse:
     hostname: clickhouse-server
-    image: yandex/clickhouse-server
+    image: yandex/clickhouse-server:19.13.5.44
     networks:
       clickhouse-network: {}
     ports:
@@ -33,7 +33,7 @@ services:
       Serilog__WriteTo__0__Name: Console
       StreamCreationService:PublicFaceRecognitionApi: http://recognition-webapi/
       StreamCreationService:callbackUrl: http://demo-event-api/event
-    image: faceterteam/recognition.demo.webapi:v1.0.13
+    image: faceterteam/recognition.demo.webapi:v1.0.16
     networks:
       backend-network: {}
       demo-network: {}
@@ -43,7 +43,7 @@ services:
   demo-client:
     environment:
       VUE_APP_API_ENDPOINT: http://localhost/api/v1/
-    image: faceterteam/recognition.demo.webclient:v1.0.15
+    image: faceterteam/recognition.demo.webclient:v1.1.1
     networks:
       backend-network: {}
       demo-network: {}
@@ -73,7 +73,7 @@ services:
     volumes:
     - ../logs/demo-event-api:/logs
   mongo:
-    image: mongo
+    image: mongo:4.2.0
     networks:
       mongo-network: {}
     ports:
@@ -134,14 +134,15 @@ services:
       RECOGNITION_DECODER_MAX_QUEUE_SIZE: '5'
       RECOGNITION_DECODER_MAX_QUEUE_SIZE_RAW_ARRAY: '40'
       RECOGNITION_DETECTOR_BATCH_SIZE: '20'
-      RECOGNITION_DETECTOR_THRESHOLD: '0.7'
+      RECOGNITION_DETECTOR_THRESHOLD: '0.45'
+      RECOGNITION_STREAM_RETRY_TIMEOUT: '5'
       RECOGNITION_IMAGE_STORAGE_HOST: clickhouse
       RECOGNITION_MONGO_HOST: mongodb://mongo:27017
       RECOGNITION_PLAYLIST_OFFSET: '10'
       RECOGNITION_PM_MONGO_HOST: mongodb://mongo:27017
       RECOGNITION_RABBITMQ_HOST: rabbitmq
       RECOGNITION_RABBITMQ_PREFETCH_COUNT: '20'
-    image: faceterteam/recognition.detector.worker:v1.0.16
+    image: faceterteam/recognition.detector.worker:v1.0.17
     mem_limit: 4gb
     memswap_limit: 2gb
     networks:
@@ -182,7 +183,10 @@ services:
     environment:
       PYTHONPATH: /caffe/python
       RECOGNITION_MTF_BATCH_SIZE: '1'
-    image: faceterteam/mtf.webapi:v1.0.4
+    image: faceterteam/mtf.webapi:v1.0.6
+    mem_limit: 6gb
+    memswap_limit: 4gb
+    mem_swappiness: 60
     networks:
       backend-network: {}
     ports:
@@ -204,7 +208,7 @@ services:
       RECOGNITION_OUTPUT_ROUTING_KEY: NewVectorEvent
       RECOGNITION_PM_MONGO_HOST: mongodb://mongo:27017
       RECOGNITION_RABBITMQ_HOST: rabbitmq
-    image: faceterteam/recognition.personstorage:v1.0.7
+    image: faceterteam/recognition.personstorage:v1.0.9
     networks:
       backend-network: {}
       mongo-network: {}
@@ -241,7 +245,7 @@ services:
       ENVIRONMENT: Production
       RabbitMq__host: rabbitmq
       RabbitMq__uri: amqp://rabbitmq/
-    image: faceterteam/recognition.projectmanager.worker:v1.0.4
+    image: faceterteam/recognition.projectmanager.worker:v1.0.6
     networks:
       backend-network: {}
       mongo-network: {}
@@ -287,12 +291,13 @@ services:
       RECOGNITION_PM_DROP_TABLES_EXPIRE_PERIOD: '15200'
       RECOGNITION_PM_IMAGE_STORAGE_HOST: clickhouse
       RECOGNITION_PM_MONGO_HOST: mongodb://mongo:27017
-      RECOGNITION_PM_PROBABLY_DISTANCE_THRESHOLD: '0.9'
-      RECOGNITION_PM_SCORE_THRESHOLD: '0.8'
+      RECOGNITION_PM_PROBABLY_DISTANCE_THRESHOLD: '0.6'
+      RECOGNITION_PM_SCORE_LOWER_THRESHOLD: '0.005'
+      RECOGNITION_PM_SCORE_THRESHOLD: '0.7'
       RECOGNITION_RABBITMQ_HOST: rabbitmq
       RECOGNITION_RABBITMQ_PREFETCH_COUNT: '1'
       RECOGNITION_TRACKLET_INPUT_ROUTING_KEY: ScoredBatchEvent
-    image: faceterteam/recognition.tracklet.worker:v1.0.22
+    image: faceterteam/recognition.tracklet.worker:v1.0.33
     networks:
       backend-network: {}
       clickhouse-network: {}
@@ -313,7 +318,7 @@ services:
       ENVIRONMENT: Production
       RabbitMq__host: rabbitmq
       RabbitMq__uri: amqp://rabbitmq/
-    image: faceterteam/recognition.public.webapi:v1.0.7
+    image: faceterteam/recognition.public.webapi:v1.0.8
     networks:
       backend-network: {}
       frontend-network: {}
@@ -321,4 +326,3 @@ services:
       rabbitmq-network: {}
       recognition-network: {}
 version: '2.4'
-
