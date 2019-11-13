@@ -15,7 +15,6 @@ services:
       clickhouse-network: {}
     ports:
     - 8123:8123/tcp
-    - 9000:9000/tcp
   demo-api:
     depends_on:
       postgresdb:
