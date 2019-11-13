@@ -142,7 +142,7 @@ services:
       RECOGNITION_PM_MONGO_HOST: mongodb://mongo:27017
       RECOGNITION_RABBITMQ_HOST: rabbitmq
       RECOGNITION_RABBITMQ_PREFETCH_COUNT: '20'
-    image: faceterteam/recognition.detector.worker:v1.0.17
+    image: faceterteam/recognition.detector.worker:v1.0.19
     mem_limit: 4gb
     memswap_limit: 2gb
     networks:
@@ -297,7 +297,7 @@ services:
       RECOGNITION_RABBITMQ_HOST: rabbitmq
       RECOGNITION_RABBITMQ_PREFETCH_COUNT: '1'
       RECOGNITION_TRACKLET_INPUT_ROUTING_KEY: ScoredBatchEvent
-    image: faceterteam/recognition.tracklet.worker:v1.0.33
+    image: faceterteam/recognition.tracklet.worker:v1.0.35
     networks:
       backend-network: {}
       clickhouse-network: {}
