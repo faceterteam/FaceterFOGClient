@@ -164,7 +164,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
-## 3. Installing FR Node + Demo
+## 3. Installing FR Node
 
 ### 3.1. Install & Run
 
@@ -183,29 +183,3 @@ git pull
 docker-compose pull
 docker-compose up -d
 ```
-
-### 3.3. Demo
-
-Navigate to [http://localhost](http://localhost) (or address of your server, where docker-compose was installed) to access node admin panel:
-
-![image1](images/image1.png)
-
-Add video stream url:
-
-![image2](images/image2.png)
-
-In order to get a link to the archive you need:
-
-1. Install Faceter Phone (learn more at [Medium](https://medium.com/@Faceter/faceter-phone-installation-guide-529f1b783f))  
-2. Sign in [Faceter Cloud Client](https://cloud.faceter.cam/public/)  
-3. Open the camera control menu and get a link to the archive
-
-![image3](images/image3.png)
-
-After adding video stream it should be displayed in the Streams section and have Active status, which means that it’s analysis has started:
-
-![image4](images/image4.png)
-
-Now you can check for the face recognition results:
-
-![image5](images/image5.png)
