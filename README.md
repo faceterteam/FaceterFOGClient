@@ -183,3 +183,25 @@ git pull
 docker-compose pull
 docker-compose up -d
 ```
+
+### 3.3. Get & Run Agent
+
+Get the Agent for Faceter Fog Client [here](agent/fogagent) It is linux-x64 execute binary.
+
+The agent must be runned on the host operating system with required parameters: `foggerid` and `nodeid`.
+
+```bash
+chmod +x fogagent
+fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
+```
+
+`foggerid` can be get from the miner's account:
+![image1](images/image1.png)
+
+`nodeid` needs to be invented. It will be used to uniquely identify the node and should be an alphanumeric value without spaces.
+
+After starting, the Agent registers the node and collects information about the configuration of the node:
+![image2](images/image2.png)
+
+And the registered year can be seen in the miner's account:
+![image3](images/image3.png)
