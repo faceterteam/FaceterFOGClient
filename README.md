@@ -192,7 +192,7 @@ The agent must be runned on the host operating system with required parameters: 
 
 ```bash
 chmod +x fogagent
-fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
+./fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
 ```
 
 `foggerid` can be get from the miner's account:
