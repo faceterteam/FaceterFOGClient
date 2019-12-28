@@ -205,6 +205,6 @@ After starting, the Agent registers the node and collects information about the 
 
 ![image2](images/Image2.png)
 
-And the registered year can be seen in the miner's account:
+And the registered node can be seen in the miner's account:
 
 ![image3](images/Image3.png)
