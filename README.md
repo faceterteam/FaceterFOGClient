@@ -196,12 +196,15 @@ fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
 ```
 
 `foggerid` can be get from the miner's account:
+
 ![image1](images/Image1.png)
 
 `nodeid` needs to be invented. It will be used to uniquely identify the node and should be an alphanumeric value without spaces.
 
 After starting, the Agent registers the node and collects information about the configuration of the node:
+
 ![image2](images/Image2.png)
 
 And the registered year can be seen in the miner's account:
+
 ![image3](images/Image3.png)
