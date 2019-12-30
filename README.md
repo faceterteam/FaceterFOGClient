@@ -203,17 +203,17 @@ chmod +x fogagent
 
 Choose `nodeid` for for future identification of this machine. It should be unique alphanumeric value without spaces.
 
-Fog Agent will collect the information about your node register it in your account
+Fog Agent will collect the information about your node and register it in your account
 
 ![image2](images/Image2.png)
 
-After successfull registrtion you will be able to see and manage the node from your account:
+After successfull registration you will be able to see and manage the node from your account:
 
 ![image3](images/Image3.png)
 
 Set up the price for 1 minute of video processing to make your node available to the market
 ![image4](images/Image4.png)
 
-That it! Now you can connect your cameras to Faceter Cloud and try Faceter Fog as a client. 
+That is it! Now you can connect your cameras to Faceter Cloud and try Faceter Fog as a client. 
 
 IMPORTANT NOTICE: This is one of the very first publicly avalable builds of Faceter Fog. If you find a bug or another issue, please post it here on Github with a full description of your case.
