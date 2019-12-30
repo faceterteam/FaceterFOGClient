@@ -1,5 +1,3 @@
-# Faceter Fog Client
+# Faceter Fog Agent
 
-This is the client for the FR node, which:  
-1) Registers a node in the Fog network  
-2) Automatically starts the recognition task when registering a contract.  
+The part of Faceter Fog Client which provide node state, mark and Facial Recognition tasks interoperability
