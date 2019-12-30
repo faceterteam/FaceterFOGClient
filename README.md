@@ -2,7 +2,7 @@
 
 [![License](images/License-CC_BY--NC--ND_3.0-lightgrey.svg)](LICENSE)
 
-Faceter Fog Client is amazing intelligent face recognition engine which will provide token utilization for Faceter token holders. Based on a few neural networks created by Faceter team.
+Faceter Fog Client is an amazing intelligent face recognition engine which will provide token utilization for Faceter token holders based on a few neural networks created by Faceter team.
 
 ## System requirements
 
@@ -66,7 +66,7 @@ And reboot your system:
 sudo reboot
 ```
 
-Now you can continue install the NVIDIA drivers on Ubuntu.
+Now you can continue to install the NVIDIA drivers on Ubuntu.
 
 Probably you will need to install linux-headers.
 
@@ -155,7 +155,7 @@ sudo apt install nvidia-docker2
 ```
 
 _If you get an error  
-ERROR: for recognition-scorer  Cannot create container for service recognition-scorer: Unknown runtime specified nvidia_
+ERROR: for recognition-scorer  Cannot create a container for service recognition-scorer: Unknown runtime specified nvidia_
 
 _Try to fix this with (learn more at [StackOverflow](https://stackoverflow.com/questions/52865988/nvidia-docker-unknown-runtime-specified-nvidia))_
 
@@ -186,18 +186,18 @@ docker-compose up -d
 
 ### 3.3. Get & Run Agent
 
-For a start need [registered as miner](https://fog.faceter.cam/miner/signup)
+For a start need [registered as a miner](https://fog.faceter.cam/miner/signup)
 
-Get the Agent for Faceter Fog Client [here](agent/fogagent) It is linux-x64 execute binary.
+Get the Agent for Faceter Fog Client [here](agent/fogagent). It is linux-x64 execute binary.
 
-The agent must be runned on the host operating system with required parameters: `foggerid` and `nodeid`.
+The agent must be run on the host operating system with required parameters: `foggerid` and `nodeid`.
 
 ```bash
 chmod +x fogagent
 ./fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
 ```
 
-`foggerid` can be get from the miner's account:
+`foggerid` can be obtained from the miner's account:
 
 ![image1](images/Image1.png)
 
