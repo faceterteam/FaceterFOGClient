@@ -211,6 +211,7 @@ services:
       PERSONFINDER_MONGO_URI: mongodb://mongo:27017
       RECOGNITION_CALLBACK_REQUEST_TIMEOUT: '5'
       RECOGNITION_FEATURE_EXTRACTOR_HOST: http://recognition-feature-extractor:9999
+      RECOGNITION_META_SERVICE_URL: http://recognition-mtf-webapi:1743
       RECOGNITION_MONGO_HOST: mongodb://mongo:27017
       RECOGNITION_PM_DISTANCE_THRESHOLD: '0.45'
       RECOGNITION_PM_DROP_TABLES_EXPIRE_PERIOD: '15200'
@@ -227,6 +228,7 @@ services:
       backend-network: null
       clickhouse-network: null
       mongo-network: null
+      mtf-network: null
       rabbitmq-network: null
       recognition-network: null
     volumes:
