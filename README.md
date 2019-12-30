@@ -2,7 +2,7 @@
 
 [![License](images/License-CC_BY--NC--ND_3.0-lightgrey.svg)](LICENSE)
 
-Faceter Fog Client is an amazing intelligent face recognition engine which will provide token utilization for Faceter token holders based on a few neural networks created by Faceter team.
+Faceter Fog Client is a software designed to build decentralized computing network mainly focused on CCTV streams processing. It utilizes ERC-20 FACE tokens a payment mechanism for both owners of the cameras and node operators (miners) 
 
 ## System requirements
 
@@ -201,16 +201,19 @@ chmod +x fogagent
 
 ![image1](images/Image1.png)
 
-`nodeid` needs to be invented. It will be used to uniquely identify the node and should be an alphanumeric value without spaces.
+Choose `nodeid` for for future identification of this machine. It should be unique alphanumeric value without spaces.
 
-After starting, the Agent registers the node and collects information about the configuration of the node:
+Fog Agent will collect the information about your node and register it in your account
 
 ![image2](images/Image2.png)
 
-And the registered node can be seen in the miner's account:
+After successfull registration you will be able to see and manage the node from your account:
 
 ![image3](images/Image3.png)
 
-After setting a price, an offer will be made for camera owners:
-
+Set up the price for 1 minute of video processing to make your node available to the market
 ![image4](images/Image4.png)
+
+That is it! Now you can connect your cameras to Faceter Cloud and try Faceter Fog as a client. 
+
+IMPORTANT NOTICE: This is one of the very first publicly available builds of Faceter Fog. If you find a bug or another issue, please post it here on Github with a full description of your case.
