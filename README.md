@@ -2,7 +2,7 @@
 
 [![License](images/License-CC_BY--NC--ND_3.0-lightgrey.svg)](LICENSE)
 
-Faceter Fog Client is amazing intelligent face recognition engine which will provide token utilization for Faceter token holders. Based on a few neural networks created by Faceter team.
+Faceter Fog Client is a software designed to build decentralized computing network mainly focused on CCTV streams processing. It utilizes ERC-20 FACE tokens a payment mechanism for both owners of the cameras and node operators (miners) 
 
 ## System requirements
 
@@ -66,7 +66,7 @@ And reboot your system:
 sudo reboot
 ```
 
-Now you can continue install the NVIDIA drivers on Ubuntu.
+Now you can continue to install the NVIDIA drivers on Ubuntu.
 
 Probably you will need to install linux-headers.
 
@@ -155,7 +155,7 @@ sudo apt install nvidia-docker2
 ```
 
 _If you get an error  
-ERROR: for recognition-scorer  Cannot create container for service recognition-scorer: Unknown runtime specified nvidia_
+ERROR: for recognition-scorer  Cannot create a container for service recognition-scorer: Unknown runtime specified nvidia_
 
 _Try to fix this with (learn more at [StackOverflow](https://stackoverflow.com/questions/52865988/nvidia-docker-unknown-runtime-specified-nvidia))_
 
@@ -164,7 +164,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
-## 3. Installing FR Node + Demo
+## 3. Installing FR Node
 
 ### 3.1. Install & Run
 
@@ -184,28 +184,36 @@ docker-compose pull
 docker-compose up -d
 ```
 
-### 3.3. Demo
+### 3.3. Get & Run Agent
 
-Navigate to [http://localhost](http://localhost) (or address of your server, where docker-compose was installed) to access node admin panel:
+For a start need [registered as a miner](https://fog.faceter.cam/miner/signup)
 
-![image1](images/image1.png)
+Get the Agent for Faceter Fog Client [here](agent/fogagent). It is linux-x64 execute binary.
 
-Add video stream url:
+The agent must be run on the host operating system with required parameters: `foggerid` and `nodeid`.
 
-![image2](images/image2.png)
+```bash
+chmod +x fogagent
+./fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
+```
 
-In order to get a link to the archive you need:
+`foggerid` can be obtained from the miner's account:
 
-1. Install Faceter Phone (learn more at [Medium](https://medium.com/@Faceter/faceter-phone-installation-guide-529f1b783f))  
-2. Sign in [Faceter Cloud Client](https://cloud.faceter.cam/public/)  
-3. Open the camera control menu and get a link to the archive
+![image1](images/Image1.png)
 
-![image3](images/image3.png)
+Choose `nodeid` for for future identification of this machine. It should be unique alphanumeric value without spaces.
 
-After adding video stream it should be displayed in the Streams section and have Active status, which means that it’s analysis has started:
+Fog Agent will collect the information about your node and register it in your account
 
-![image4](images/image4.png)
+![image2](images/Image2.png)
 
-Now you can check for the face recognition results:
+After successfull registration you will be able to see and manage the node from your account:
 
-![image5](images/image5.png)
+![image3](images/Image3.png)
+
+Set up the price for 1 minute of video processing to make your node available to the market
+![image4](images/Image4.png)
+
+That is it! Now you can connect your cameras to Faceter Cloud and try Faceter Fog as a client. 
+
+IMPORTANT NOTICE: This is one of the very first publicly available builds of Faceter Fog. If you find a bug or another issue, please post it here on Github with a full description of your case.
