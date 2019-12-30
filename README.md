@@ -186,6 +186,8 @@ docker-compose up -d
 
 ### 3.3. Get & Run Agent
 
+For a start need [registered as miner](https://fog.faceter.cam/miner/signup)
+
 Get the Agent for Faceter Fog Client [here](agent/fogagent) It is linux-x64 execute binary.
 
 The agent must be runned on the host operating system with required parameters: `foggerid` and `nodeid`.
@@ -208,3 +210,7 @@ After starting, the Agent registers the node and collects information about the 
 And the registered node can be seen in the miner's account:
 
 ![image3](images/Image3.png)
+
+After setting a price, an offer will be made for camera owners:
+
+![image4](images/Image4.png)
