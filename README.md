@@ -216,4 +216,4 @@ Set up the price for 1 minute of video processing to make your node available to
 
 That is it! Now you can connect your cameras to Faceter Cloud and try Faceter Fog as a client. 
 
-IMPORTANT NOTICE: This is one of the very first publicly avalable builds of Faceter Fog. If you find a bug or another issue, please post it here on Github with a full description of your case.
+IMPORTANT NOTICE: This is one of the very first publicly available builds of Faceter Fog. If you find a bug or another issue, please post it here on Github with a full description of your case.
