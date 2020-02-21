@@ -189,48 +189,39 @@ docker-compose up -d
 
 For a start need [registered as a miner](https://fog.faceter.cam/miner/signup)
 
-Get the Agent for Faceter Fog Client as a deb-package.
+Follow the next steps to installing the Agent for Faceter Fog Client as a deb-package.
 
-Installing the Faceter public GPG key.
+1. Installing the Faceter public GPG key.
 
 ```bash
 wget -O - 'https://repo.faceter.cam/gpg.key' | sudo apt-key add -
 ```
 
-Add repository.
+2. Add repository.
 
 ```bash
 sudo bash -c 'echo "deb https://repo.faceter.cam/apt/ debian main" > /etc/apt/sources.list.d/faceter.list'
 ```
 
-Update the Apt repository cache.
+3. Update the Apt repository cache.
 
 ```bash
 sudo apt update
 ```
 
-Install fogagent.
+4. Install fogagent.
 
 ```bash
 sudo apt install fogagent
 ```
 
-The agent as **a deb-package** must be run on the host operating system with required parameters: `foggerid` and `nodeid`.
+The Agent as **a deb-package** must be run on the host operating system with required parameters: `foggerid` and `nodeid`.
 
 ```bash
 fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
 ```
 
-Get the Agent for Faceter Fog Client as linux-x64 execute binary [here](agent/fogagent). 
-
-The agent as **linux-x64 execute binary** must be run on the host operating system with required parameters: `foggerid` and `nodeid`.
-
-```bash
-chmod +x fogagent
-./fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
-```
-
-For both launch methods `foggerid` can be obtained from the miner's account:
+For launch `foggerid` can be obtained from the miner's account:
 
 ![image1](images/Image1.png)
 
