@@ -7,13 +7,14 @@ Faceter Fog Client is a software designed to build decentralized computing netwo
 ## System requirements
 
 1. Linux OS compatible with Debian 9
-2. Nvidia 10XX graphics card with 4GB+ RAM
-3. CUDA 10+
-4. RAM 12GB+
-5. Storage 18 GB Hard drive space
-6. Linux kernel version 4.9+
-7. Docker CE for Linux 18.06.0+
-8. Python 3.6.7+
+2. AMD64 architecture required
+3. Nvidia 10XX graphics card with 4GB+ RAM
+4. CUDA 10+
+5. RAM 12GB+
+6. Storage 18 GB Hard drive space
+7. Linux kernel version 4.9+
+8. Docker CE for Linux 18.06.0+
+9. Python 3.6.7+
 
 ## Faceter Fog Client Installation Guide
 
@@ -188,16 +189,48 @@ docker-compose up -d
 
 For a start need [registered as a miner](https://fog.faceter.cam/miner/signup)
 
-Get the Agent for Faceter Fog Client [here](agent/fogagent). It is linux-x64 execute binary.
+Get the Agent for Faceter Fog Client as a deb-package.
 
-The agent must be run on the host operating system with required parameters: `foggerid` and `nodeid`.
+Installing the Faceter public GPG key.
+
+```bash
+wget -O - 'https://repo.faceter.cam/gpg.key' | sudo apt-key add -
+```
+
+Add repository.
+
+```bash
+sudo bash -c 'echo "deb https://repo.faceter.cam/apt/ debian main" > /etc/apt/sources.list.d/faceter.list'
+```
+
+Update the Apt repository cache.
+
+```bash
+sudo apt update
+```
+
+Install fogagent.
+
+```bash
+sudo apt install fogagent
+```
+
+The agent as **a deb-package** must be run on the host operating system with required parameters: `foggerid` and `nodeid`.
+
+```bash
+fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
+```
+
+Get the Agent for Faceter Fog Client as linux-x64 execute binary [here](agent/fogagent). 
+
+The agent as **linux-x64 execute binary** must be run on the host operating system with required parameters: `foggerid` and `nodeid`.
 
 ```bash
 chmod +x fogagent
 ./fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
 ```
 
-`foggerid` can be obtained from the miner's account:
+For both launch methods `foggerid` can be obtained from the miner's account:
 
 ![image1](images/Image1.png)
 
