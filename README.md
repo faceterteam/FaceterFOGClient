@@ -215,10 +215,29 @@ sudo apt update
 sudo apt install fogagent
 ```
 
-The Agent as **a deb-package** must be run on the host operating system with required parameters: `foggerid` and `nodeid`.
+During installation, you must specify your `foggerid`
+![foggerid request](images/Image5.png)
+and `nodeid`
+![nodeid request](images/Image6.png)
+
+Also, the agent can be launched in the host operating system with the following parameters: `--foggerid` and `--nodeid`. In this case, the parameters from the configuration will be overridden.
 
 ```bash
 fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
+```
+
+To automatically start the agent at login, you can run the following command.
+
+```bash
+sudo systemctl enable fogagent
+sudo service fogagent start
+```
+
+or
+
+```bash
+sudo update-rc.d -f fogagent defaults
+sudo service fogagent start
 ```
 
 For launch `foggerid` can be obtained from the miner's account:
@@ -238,6 +257,6 @@ After successfull registration you will be able to see and manage the node from 
 Set up the price for 1 minute of video processing to make your node available to the market
 ![image4](images/Image4.png)
 
-That is it! Now you can connect your cameras to Faceter Cloud and try Faceter Fog as a client. 
+That is it! Now you can connect your cameras to Faceter Cloud and try Faceter Fog as a client.
 
 IMPORTANT NOTICE: This is one of the very first publicly available builds of Faceter Fog. If you find a bug or another issue, please post it here on Github with a full description of your case.
