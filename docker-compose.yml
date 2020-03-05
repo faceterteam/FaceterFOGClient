@@ -11,49 +11,42 @@ services:
     hostname: clickhouse-server
     image: yandex/clickhouse-server:19.13.5.44
     networks:
-      clickhouse-network: {}
+      clickhouse-network: null
     ports:
-      - 8123:8123/tcp
+    - 8123:8123/tcp
   mongo:
     image: mongo:4.2.0
     networks:
-      mongo-network: {}
+      mongo-network: null
     ports:
-      - 27017:27017/tcp
+    - 27017:27017/tcp
     volumes:
-      - /var/lib/recognition/mongo:/data/db:rw
-  nginx:
-    depends_on:
-      recognition-webapi:
-        condition: service_started
-    image: nginx:1.15.6-alpine
-    networks:
-      frontend-network: {}
-    ports:
-      - 80:80/tcp
-    restart: always
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:rw
-      - ./nginx/locations/recognition.conf:/etc/nginx/conf.d/locations/recognition.conf:rw
-      - ./nginx/upstreams/recognition.conf:/etc/nginx/conf.d/upstreams/recognition.conf:rw
+    - /var/lib/recognition/mongo:/data/db:rw
   rabbitmq:
     image: rabbitmq:3.7.8-management
     networks:
-      rabbitmq-network: {}
+      rabbitmq-network: null
     ports:
-      - 5672:5672/tcp
-      - 15672:15672/tcp
+    - 5672:5672/tcp
+    - 15672:15672/tcp
   recognition-callbacksender:
     depends_on:
+      mongo:
+        condition: service_started
       rabbitmq:
         condition: service_started
     environment:
+      PERSONFINDER_MONGO_URI: mongodb://mongo:27017
+      RECOGNITION_MONGO_HOST: mongodb://mongo:27017
+      RECOGNITION_MONGO_URI: mongodb://mongo:27017
+      RECOGNITION_PM_MONGO_HOST: mongodb://mongo:27017
       RECOGNITION_RABBITMQ_HOST: rabbitmq
-    image: faceterteam/recognition.callbacksender:v1.0.0
+    image: faceterteam/recognition.callbacksender:v1.0.1
     networks:
-      backend-network: {}
-      rabbitmq-network: {}
-      recognition-network: {}
+      backend-network: null
+      mongo-network: null
+      rabbitmq-network: null
+      recognition-network: null
   recognition-detector:
     depends_on:
       clickhouse:
@@ -72,26 +65,27 @@ services:
       RECOGNITION_DETECTOR_THRESHOLD: '0.45'
       RECOGNITION_IMAGE_STORAGE_HOST: clickhouse
       RECOGNITION_MONGO_HOST: mongodb://mongo:27017
+      RECOGNITION_MONGO_URI: mongodb://mongo:27017
       RECOGNITION_PLAYLIST_OFFSET: '10'
       RECOGNITION_PM_MONGO_HOST: mongodb://mongo:27017
       RECOGNITION_RABBITMQ_HOST: rabbitmq
       RECOGNITION_RABBITMQ_PREFETCH_COUNT: '20'
       RECOGNITION_STREAM_RETRY_TIMEOUT: '5'
-    image: faceterteam/recognition.detector.worker:v1.0.20
+    image: faceterteam/recognition.detector.worker:v1.0.21
     mem_limit: 4gb
     memswap_limit: 2gb
     networks:
-      backend-network: {}
-      clickhouse-network: {}
-      mongo-network: {}
-      rabbitmq-network: {}
-      recognition-network: {}
+      backend-network: null
+      clickhouse-network: null
+      mongo-network: null
+      rabbitmq-network: null
+      recognition-network: null
     oom_kill_disable: true
     ports:
-      - 9989:22/tcp
+    - 9989:22/tcp
     runtime: nvidia
     volumes:
-      - /docker-data/recognition/detector/logs:/app/logs:rw
+    - /docker-data/recognition/detector/logs:/app/logs:rw
   recognition-feature-extractor:
     depends_on:
       clickhouse:
@@ -107,12 +101,12 @@ services:
       RECOGNITION_RABBITMQ_PREFETCH_COUNT: '1'
     image: faceterteam/recognition.featureextractor.worker:v1.0.4
     networks:
-      backend-network: {}
-      clickhouse-network: {}
-      rabbitmq-network: {}
-      recognition-network: {}
+      backend-network: null
+      clickhouse-network: null
+      rabbitmq-network: null
+      recognition-network: null
     ports:
-      - 9999:9999/tcp
+    - 9999:9999/tcp
     runtime: nvidia
   recognition-mtf-webapi:
     environment:
@@ -123,9 +117,9 @@ services:
     mem_swappiness: 80
     memswap_limit: 8g
     networks:
-      backend-network: {}
+      backend-network: null
     ports:
-      - 1743:1743/tcp
+    - 1743:1743/tcp
     restart: always
     runtime: nvidia
   recognition-person-storage:
@@ -141,15 +135,16 @@ services:
       RECOGNITION_ERROR_ROUTING_KEY: PersonStorageError
       RECOGNITION_INPUT_ROUTING_KEY: MutationVectorEvent
       RECOGNITION_MONGO_HOST: mongodb://mongo:27017
+      RECOGNITION_MONGO_URI: mongodb://mongo:27017
       RECOGNITION_OUTPUT_ROUTING_KEY: NewVectorEvent
       RECOGNITION_PM_MONGO_HOST: mongodb://mongo:27017
       RECOGNITION_RABBITMQ_HOST: rabbitmq
-    image: faceterteam/recognition.personstorage:v1.0.11
+    image: faceterteam/recognition.personstorage:v1.0.12
     networks:
-      backend-network: {}
-      mongo-network: {}
-      rabbitmq-network: {}
-      recognition-network: {}
+      backend-network: null
+      mongo-network: null
+      rabbitmq-network: null
+      recognition-network: null
   recognition-personfinder-webapi:
     depends_on:
       mongo:
@@ -159,14 +154,15 @@ services:
       PERSONFINDER_FEATURE_EXTRACTOR_URI: http://recognition-feature-extractor:9999
       PERSONFINDER_MONGO_URI: mongodb://mongo:27017
       RECOGNITION_MONGO_HOST: mongodb://mongo:27017
+      RECOGNITION_MONGO_URI: mongodb://mongo:27017
       RECOGNITION_PM_MONGO_HOST: mongodb://mongo:27017
     image: faceterteam/recognition.personfinder:v1.0.3
     networks:
-      backend-network: {}
-      mongo-network: {}
-      recognition-network: {}
+      backend-network: null
+      mongo-network: null
+      recognition-network: null
     ports:
-      - 9123:8080/tcp
+    - 9123:8080/tcp
   recognition-project-manager-worker:
     depends_on:
       mongo:
@@ -181,12 +177,12 @@ services:
       ENVIRONMENT: Production
       RabbitMq__host: rabbitmq
       RabbitMq__uri: amqp://rabbitmq/
-    image: faceterteam/recognition.projectmanager.worker:v1.0.9
+    image: faceterteam/recognition.projectmanager.worker:v1.0.11
     networks:
-      backend-network: {}
-      mongo-network: {}
-      rabbitmq-network: {}
-      recognition-network: {}
+      backend-network: null
+      mongo-network: null
+      rabbitmq-network: null
+      recognition-network: null
   recognition-scorer:
     container_name: recognition-scorer
     depends_on:
@@ -201,15 +197,15 @@ services:
       RECOGNITION_RABBITMQ_HOST: rabbitmq
       RECOGNITION_RABBITMQ_PREFETCH_COUNT: '1'
       RECOGNITION_SCORER_BATCH_REDUCE_MIN_SIZE: '2'
-    image: faceterteam/recognition.scorer.worker:v1.0.17
+    image: faceterteam/recognition.scorer.worker:v1.0.19
     networks:
-      backend-network: {}
-      clickhouse-network: {}
-      rabbitmq-network: {}
-      recognition-network: {}
+      backend-network: null
+      clickhouse-network: null
+      rabbitmq-network: null
+      recognition-network: null
     runtime: nvidia
     volumes:
-      - /docker-data/recognition/scorer/logs:/app/logs:rw
+    - /docker-data/recognition/scorer/logs:/app/logs:rw
   recognition-tracklet:
     depends_on:
       clickhouse:
@@ -224,6 +220,7 @@ services:
       RECOGNITION_FEATURE_EXTRACTOR_HOST: http://recognition-feature-extractor:9999
       RECOGNITION_META_SERVICE_URL: http://recognition-mtf-webapi:1743
       RECOGNITION_MONGO_HOST: mongodb://mongo:27017
+      RECOGNITION_MONGO_URI: mongodb://mongo:27017
       RECOGNITION_PM_DISTANCE_THRESHOLD: '0.45'
       RECOGNITION_PM_DROP_TABLES_EXPIRE_PERIOD: '15200'
       RECOGNITION_PM_IMAGE_STORAGE_HOST: clickhouse
@@ -234,16 +231,16 @@ services:
       RECOGNITION_RABBITMQ_HOST: rabbitmq
       RECOGNITION_RABBITMQ_PREFETCH_COUNT: '1'
       RECOGNITION_TRACKLET_INPUT_ROUTING_KEY: ScoredBatchEvent
-    image: faceterteam/recognition.tracklet.worker:v1.0.42
+    image: faceterteam/recognition.tracklet.worker:v1.0.47
     networks:
-      backend-network: {}
-      clickhouse-network: {}
-      mongo-network: {}
-      mtf-network: {}
-      rabbitmq-network: {}
-      recognition-network: {}
+      backend-network: null
+      clickhouse-network: null
+      mongo-network: null
+      mtf-network: null
+      rabbitmq-network: null
+      recognition-network: null
     volumes:
-      - /tmp/Resources:/app/Resources:rw
+    - /tmp/Resources:/app/Resources:rw
   recognition-webapi:
     depends_on:
       mongo:
@@ -256,13 +253,14 @@ services:
       ENVIRONMENT: Production
       RabbitMq__host: rabbitmq
       RabbitMq__uri: amqp://rabbitmq/
-    image: faceterteam/recognition.public.webapi:v1.0.12
+    image: faceterteam/recognition.public.webapi:v1.0.13
     networks:
-      backend-network: {}
-      frontend-network: {}
-      mongo-network: {}
-      rabbitmq-network: {}
-      recognition-network: {}
+      backend-network: null
+      frontend-network: null
+      mongo-network: null
+      rabbitmq-network: null
+      recognition-network: null
     ports:
-      - 8585:80/tcp
+    - 8585:80/tcp
 version: '2.4'
+
