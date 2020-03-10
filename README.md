@@ -240,6 +240,11 @@ sudo update-rc.d -f fogagent defaults
 sudo service fogagent start
 ```
 
+To change the configuration you can use
+```bash
+sudo dpkg-reconfigure fogagent
+```
+
 For launch `foggerid` can be obtained from the miner's account:
 
 ![image1](images/Image1.png)
