@@ -177,7 +177,7 @@ services:
       ENVIRONMENT: Production
       RabbitMq__host: rabbitmq
       RabbitMq__uri: amqp://rabbitmq/
-    image: faceterteam/recognition.projectmanager.worker:v1.0.11
+    image: faceterteam/recognition.projectmanager.worker:v1.0.12
     networks:
       backend-network: null
       mongo-network: null
@@ -253,7 +253,7 @@ services:
       ENVIRONMENT: Production
       RabbitMq__host: rabbitmq
       RabbitMq__uri: amqp://rabbitmq/
-    image: faceterteam/recognition.public.webapi:v1.0.13
+    image: faceterteam/recognition.public.webapi:v1.0.14
     networks:
       backend-network: null
       frontend-network: null
