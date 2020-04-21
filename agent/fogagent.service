@@ -1,9 +1,0 @@
-[Unit]
-Description=Fsceter FOG Agent Service
-
-[Service]
-Type=simple
-ExecStart=/bin/bash /faceter/agent-start.sh
-
-[Install]
-WantedBy=multi-user.target
