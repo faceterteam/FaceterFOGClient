@@ -124,21 +124,13 @@ sudo apt-get update
 sudo apt-get install docker-ce
 ```
 
-### 2.1. Install docker-compose
-
-```bash
-sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-
-sudo chmod +x /usr/local/bin/docker-compose
-```
-
 If you would like to use Docker as a non-root user, you should now consider adding your user to the “docker” group with something like:
 
 ```bash
 sudo usermod -aG docker your-user-name
 ```
 
-### 2.2. Install nvidia-docker
+### 2.1. Install nvidia-docker
 
 ```bash
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
@@ -167,29 +159,11 @@ sudo systemctl restart docker
 
 ## 3. Installing FR Node
 
-### 3.1. Install & Run
-
-```bash
-git clone https://github.com/faceterteam/FaceterFOGClient.git
-cd FaceterFOGClient
-docker-compose pull
-docker-compose up -d
-```
-
-### 3.2. Update
-
-```bash
-docker-compose down
-git pull
-docker-compose pull
-docker-compose up -d
-```
-
-### 3.3. Get & Run Agent
+### 3.1. Get & Run Agent
 
 For a start need [registered as a miner](https://fog.faceter.cam/miner/signup)
 
-Follow the next steps to installing the Agent for Faceter Fog Client as a deb-package.
+Follow the next steps to installing Fog Agent for Faceter Fog Client as a deb-package.
 
 1. Installing the Faceter public GPG key.
 
@@ -216,17 +190,20 @@ sudo apt install fogagent
 ```
 
 During installation, you must specify your `foggerid`
+
 ![foggerid request](images/Image5.png)
+
 and `nodeid`
+
 ![nodeid request](images/Image6.png)
 
-Also, the agent can be launched in the host operating system with the following parameters: `--foggerid` and `--nodeid`. In this case, the parameters from the configuration will be overridden.
+Also, Fog Agent can be launched in the host operating system with the following parameters: `--foggerid` and `--nodeid`. In this case, the parameters from the configuration will be overridden.
 
 ```bash
 fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
 ```
 
-To automatically start the agent at login, you can run the following command.
+To automatically start Fog Agent at login, you can run the following command.
 
 ```bash
 sudo systemctl enable fogagent
@@ -251,15 +228,28 @@ For launch `foggerid` can be obtained from the miner's account:
 
 Choose `nodeid` for for future identification of this machine. It should be unique alphanumeric value without spaces.
 
-Fog Agent will collect the information about your node and register it in your account
+Since version 0.7.0 Fog Agent as part of the Faceter Fog Client starting to be able to download and install all required parts of the Client by it own.
+
+All Fog Agent's actions should be written into the terminal (non-service running mode) and to log files, located at
+`/var/log/fogagnet/yyyyMMdd.log`
+
+After first time installation Fog Agent will check several conditions on the local machine:
+* existing version of NVIDIA graphic driver
+* existing version of NVIDIA CUDA
+* existing version of Docker service
+
+When environment conditions will be passed, Fog Agent will check Faceter Fog Client docker images existing, their tags then download and install the newest if needed.
+
+Fog Agent will collect the information about your node and register it in your account.
 
 ![image2](images/Image2.png)
 
-After successfull registration you will be able to see and manage the node from your account:
+After successful registration you will be able to see and manage the node from your account:
 
 ![image3](images/Image3.png)
 
 Set up the price for 1 minute of video processing to make your node available to the market
+
 ![image4](images/Image4.png)
 
 That is it! Now you can connect your cameras to Faceter Cloud and try Faceter Fog as a client.
