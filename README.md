@@ -228,16 +228,17 @@ For launch `foggerid` can be obtained from the miner's account:
 
 Choose `nodeid` for for future identification of this machine. It should be unique alphanumeric value without spaces.
 
-Starting with version 0.7.0, FR Node is part of Fog Agent. Now Faceter FOG Client is a single component. 
-Fog Agent is installing, running and updating FR Node.
+Since version 0.7.0 Fog Agent as part of the Faceter Fog Client starting to be able to download and install all required parts of the Client by it own.
 
-Each action of Fog Agent is written to the terminal and to the log files located along the path `/var/log/fogagent/{Date}.log`, where {Date} is the date the logs were written in the format `20200420`. 
-If Fog Agent is running as a service, then the logs are written only to the log files.
+All Fog Agent's actions should be written into the terminal (non-service running mode) and to log files, located at
+`/var/log/fogagnet/yyyyMMdd.log`
 
-At the first start, Fog Agent will check for the installed Nvidia driver with CUDA and the installed Docker. In case of a positive or negative outcome, it will be written to the logs.
+After first time installation Fog Agent will check several conditions on the local machine:
+* existing version of NVIDIA graphic driver
+* existing version of NVIDIA CUDA
+* existing version of Docker service
 
-If FR Node has never been launched in the host operating system, then at the first start, Fog Agent will download, install and run all components of FR Node. 
-If FR Node has already been installed and started using `docker-compose`, then upon starting Fog Agent will check the container image tags and, if there are deprecated tags, it will update and restart all components of FR Node.
+When environment conditions will be passed, Fog Agent will check Faceter Fog Client docker images existing, their tags then download and install the newest if needed.
 
 Fog Agent will collect the information about your node and register it in your account.
 
