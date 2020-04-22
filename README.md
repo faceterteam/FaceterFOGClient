@@ -231,7 +231,7 @@ Choose `nodeid` for for future identification of this machine. It should be uniq
 **Since version 0.7.0** Fog Agent as part of the Faceter Fog Client starting to be able to download and install all required parts of the Client by it own.
 
 All Fog Agent's actions should be written into the terminal (non-service running mode) and to log files, located at
-`/var/log/fogagnet/yyyyMMdd.log`
+`/var/log/fogagent/yyyyMMdd.log`
 
 After first time installation Fog Agent will check several conditions on the local machine:
 * existing version of NVIDIA graphic driver
