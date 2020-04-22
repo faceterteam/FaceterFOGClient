@@ -157,7 +157,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
-## 3. Installing FR Node
+## 3. Installing Faceter Fog Client
 
 ### 3.1. Get & Run Agent
 
@@ -228,7 +228,7 @@ For launch `foggerid` can be obtained from the miner's account:
 
 Choose `nodeid` for for future identification of this machine. It should be unique alphanumeric value without spaces.
 
-Since version 0.7.0 Fog Agent as part of the Faceter Fog Client starting to be able to download and install all required parts of the Client by it own.
+**Since version 0.7.0** Fog Agent as part of the Faceter Fog Client starting to be able to download and install all required parts of the Client by it own.
 
 All Fog Agent's actions should be written into the terminal (non-service running mode) and to log files, located at
 `/var/log/fogagnet/yyyyMMdd.log`
