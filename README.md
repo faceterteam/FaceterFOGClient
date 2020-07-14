@@ -197,24 +197,22 @@ and `nodeid`
 
 ![nodeid request](images/Image6.png)
 
+Fog Agent will be installed as a systemd service.
+
+For check status you can be use command:
+```bash
+sudo systemctl status fogagent
+```
+
+For see logs you can be use command:
+```bash
+sudo journalctl -u fogagent
+```
+
 Also, Fog Agent can be launched in the host operating system with the following parameters: `--foggerid` and `--nodeid`. In this case, the parameters from the configuration will be overridden.
 
 ```bash
 fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
-```
-
-To automatically start Fog Agent at login, you can run the following command.
-
-```bash
-sudo systemctl enable fogagent
-sudo service fogagent start
-```
-
-or
-
-```bash
-sudo update-rc.d -f fogagent defaults
-sudo service fogagent start
 ```
 
 To change the configuration you can use
