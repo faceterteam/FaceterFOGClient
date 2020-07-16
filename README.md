@@ -199,12 +199,12 @@ and `nodeid`
 
 Fog Agent will be installed as a systemd service.
 
-For check status you can be use command:
+Status can be observed via command:
 ```bash
 sudo systemctl status fogagent
 ```
 
-For see logs you can be use command:
+Fog Agent use common logging subsystem journalctl:
 ```bash
 sudo journalctl -u fogagent
 ```
