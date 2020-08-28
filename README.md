@@ -197,6 +197,10 @@ and `nodeid`
 
 ![nodeid request](images/Image6.png)
 
+and `secretkey`
+
+![secretkey request](images/Image7.png)
+
 Fog Agent will be installed as a systemd service.
 
 Status can be observed via command:
@@ -209,10 +213,10 @@ Fog Agent use common logging subsystem journalctl:
 sudo journalctl -u fogagent
 ```
 
-Also, Fog Agent can be launched in the host operating system with the following parameters: `--foggerid` and `--nodeid`. In this case, the parameters from the configuration will be overridden.
+Also, Fog Agent can be launched in the host operating system with the following parameters: `--foggerid` and `--nodeid` and `--secretkey`. In this case, the parameters from the configuration will be overridden.
 
 ```bash
-fogagent --foggerid <your-fogger-id> --nodeid <your-node-id>
+fogagent --foggerid <your-fogger-id> --nodeid <your-node-id> --secretkey <your-secretkey>
 ```
 
 To change the configuration you can use
@@ -220,14 +224,29 @@ To change the configuration you can use
 sudo dpkg-reconfigure fogagent
 ```
 
-For launch `foggerid` can be obtained from the miner's account:
+To start the fogagent, the parameters: `foggerid` and `secretkey` must be obtained in the miner's account.
+Your `foggerid`  is located in the upper right corner.
+Next, to install the secretkey, click on the Set Secret Key button in the pop-up message at the top of the screen.
 
 ![image1](images/Image1.png)
+
+You will go to the secret key section displaying the current secret key status.
+
+![image8](images/Image8.png)
+
+Click on the Generate button to create a `secretkey` and save it to configure the fogagent.
+
+![image9](images/Image9.png)
+
+`secretkey` is displayed once, and will not be displayed on subsequent visits to this section. If you lose your secretkey, you can always generate a new `secretkey` similar to the initial installation.
+
+![Image10](images/Image10.png)
 
 Choose `nodeid` for for future identification of this machine. It should be unique alphanumeric value without spaces.
 
 **Since version 0.7.0** Fog Agent as part of the Faceter Fog Client starting to be able to download and install all required parts of the Client by it own.
 
+**Since version 0.10.0** Secret key is required.
 All Fog Agent's actions should be written into the terminal (non-service running mode) and to log files, located at
 `/var/log/fogagent/yyyyMMdd.log`
 
