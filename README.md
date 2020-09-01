@@ -2,7 +2,7 @@
 
 [![License](images/License-CC_BY--NC--ND_3.0-lightgrey.svg)](LICENSE)
 
-Faceter Fog Client is a software designed to build decentralized computing network mainly focused on CCTV streams processing. It utilizes ERC-20 FACE tokens a payment mechanism for both owners of the cameras and node operators (miners) 
+Faceter Fog Client is a software designed to build decentralized computing network mainly focused on processing video surveillance streams. It utilizes the ERC-20 FACE tokens, a payment mechanism for both owners of cameras and node operators (miners).
 
 ## System requirements
 
@@ -21,7 +21,7 @@ Faceter Fog Client is a software designed to build decentralized computing netwo
 ### 1. Download & Install Nvidia drivers
 
 Identification of your video card  
-The NVIDIA graphics processing unit (GPU) series/codename of an installed video card can usually be identified using the lspci command.  
+The series/codename of any NVIDIA graphics processing unit (GPU) can usually be identified by using the lspci command.  
 For example:
 
 ```bash
@@ -31,7 +31,7 @@ lspci -nn | egrep -i "3d|display|vga"
 Find drivers for your graphics card on the following page
 [Nvidia](https://www.nvidia.com/DOWNLOAD/INDEX.ASPX?LANG=EN)
 
-Install appropriate drivers. Note that this will require ~600Mb free disk space.  
+Install appropriate drivers. Note that this will require ~600Mb of free disk space.  
 For example:
 
 ```bash
@@ -42,14 +42,13 @@ sudo apt install make
 sudo ./NVIDIA-Linux-x86_64-430.34.run
 ```
 
-If during NVIDIA drivers installation you have an error:
+If during NVIDIA drivers installation you have the following error:
 
 ```error
 ERROR: The Nouveau kernel driver is currently in use by your system.  This driver is incompatible with the NVIDIA driver, and must be disabled before proceeding.  Please consult the NVIDIA driver README and your Linux distribution's documentation for details on how to correctly disable the Nouveau kernel driver.
 ```
 
-So, before proceeding installation NVIDIA drivers on Ubuntu you must disable Nouveau kernel driver. To disable the default Nouveau Nvidia driver.
-Run command:
+Then, before proceeding to installation of NVIDIA drivers on Ubuntu, you must disable the Nouveau kernel driver. To disable the default Nouveau NVIDIA driver, run the command:
 
 ```bash
 echo "blacklist nouveau"|sudo tee -a /etc/modprobe.d/blacklist.conf
@@ -161,7 +160,7 @@ sudo systemctl restart docker
 
 ### 3.1. Get & Run Agent
 
-For a start need [registered as a miner](https://fog.faceter.cam/miner/signup)
+To start, you need to [register as a miner](https://fog.faceter.cam/miner/signup)
 
 Follow the next steps to installing Fog Agent for Faceter Fog Client as a deb-package.
 
@@ -208,7 +207,7 @@ Status can be observed via command:
 sudo systemctl status fogagent
 ```
 
-Fog Agent use common logging subsystem journalctl:
+Fog Agent uses common logging subsystem journalctl:
 ```bash
 sudo journalctl -u fogagent
 ```
@@ -219,12 +218,12 @@ Also, Fog Agent can be launched in the host operating system with the following 
 fogagent --foggerid <your-fogger-id> --nodeid <your-node-id> --secretkey <your-secretkey>
 ```
 
-To change the configuration you can use
+To change the configuration, you can use
 ```bash
 sudo dpkg-reconfigure fogagent
 ```
 
-To start the fogagent, the parameters: `foggerid` and `secretkey` must be obtained in the miner's account.
+To start the fogagent, the parameters `foggerid` and `secretkey` must be obtained in the miner's account.
 Your `foggerid`  is located in the upper right corner.
 Next, to install the secretkey, click on the Set Secret Key button in the pop-up message at the top of the screen.
 
@@ -242,15 +241,15 @@ Click on the Generate button to create a `secretkey` and save it to configure th
 
 ![Image10](images/Image10.png)
 
-Choose `nodeid` for for future identification of this machine. It should be unique alphanumeric value without spaces.
+Choose `nodeid` for future identification of this machine. It should be unique alphanumeric value without spaces.
 
-**Since version 0.7.0** Fog Agent as part of the Faceter Fog Client starting to be able to download and install all required parts of the Client by it own.
+**Since version 0.7.0** Fog Agent as part of the Faceter Fog Client is able to download and install all required parts of the Client on its own.
 
 **Since version 0.10.0** Secret key is required.
 All Fog Agent's actions should be written into the terminal (non-service running mode) and to log files, located at
 `/var/log/fogagent/yyyyMMdd.log`
 
-After first time installation Fog Agent will check several conditions on the local machine:
+After the first time installation, Fog Agent checks several conditions on the local machine:
 * existing version of NVIDIA graphic driver
 * existing version of NVIDIA CUDA
 * existing version of Docker service
