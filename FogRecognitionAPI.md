@@ -12,7 +12,7 @@ First, you should set an URLs of your backend where callbacks request will be se
 
 ### `PersonChanged` - will be sent to the Person meta info callback URL.
 
-```json
+```javascript
 {
   "personId": "c15290a1-3e2e-457d-8d2f-21bd157615d0" (uuid),
   "sex": "male" (string | [male, female]),
@@ -32,7 +32,7 @@ First, you should set an URLs of your backend where callbacks request will be se
 
 ### `RecognitionEvent` - will be sent Person visit callback URL.
 
-```json
+```javascript
 {
   "cameraId": "afe78665-4398-4c5e-b2fa-31bf19ef1b4e" (uuid),
   "id": "4aec96fd-acdf-4f05-a904-87cc11edf9a4" (uuid),
@@ -120,7 +120,7 @@ First, you should set an URLs of your backend where callbacks request will be se
 
 * When you need to get best face image (avatar) you're backend should return success response with HTTP code 200 (OK):
 
-```json
+```javascript
 	"avatarCallbackUrl": "http://localhost/avatar"
 ```
 
