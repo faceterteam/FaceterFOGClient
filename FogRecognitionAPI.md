@@ -6,7 +6,7 @@ First, you should set an URLs of your backend where callbacks request will be se
 1. Person meta info callback URL
 2. Person visit callback URL
 
-(images/SourceURLs.png)
+![Video source URLs](images/SourceURLs.png)
 
 ## Event types
 
@@ -133,10 +133,10 @@ You're backend shoukd return HTTP code 204 (NoContent).
 
 * If you not needed in best face image just shoukd just return HTTP code 204 (NoContent).
 
-(images/RecognitionEvent.png)
+![Recognition event](images/RecognitionEvent.png)
 
 #### PersonChanged processing
 
 * You're backend shoukd return HTTP code 204 (NoContent).
 
-(images/PersonChanged.png)
+![Person changed](images/PersonChanged.png)
