@@ -2,7 +2,7 @@
 
 ## How to connect to CallbackAPI
 
-First, you should set an URLs of your backend where callbacks request will be sent. This action is available on Sources section, you should choise your video source then setup two URL: 
+First, you need to set an URLs of your backend where callbacks request will be sent. This action is available in the Sources section, you need to choose your video source then set up two URL: 
 1. Person meta info callback URL
 2. Person visit callback URL
 
@@ -21,7 +21,7 @@ First, you should set an URLs of your backend where callbacks request will be se
 }
 ```
 
-#### Fields description
+#### Field descriptions
 
 | Title |  Description |
 | ------ | ------ |
@@ -30,7 +30,7 @@ First, you should set an URLs of your backend where callbacks request will be se
 |  **Age**  | Person's age |
 |  **CameraId**  | Video source identifier |
 
-### `RecognitionEvent` - will be sent Person visit callback URL.
+### `RecognitionEvent` - will be sent to the Person visit callback URL.
 
 ```javascript
 {
@@ -93,7 +93,7 @@ First, you should set an URLs of your backend where callbacks request will be se
 }
 ```
 
-#### Fields description
+#### Field descriptions
 
 | Title |  Description |
 | ------ | ------ |
@@ -118,7 +118,7 @@ First, you should set an URLs of your backend where callbacks request will be se
 
 #### RecognitionEvent processing
 
-* When you need to get best face image (avatar) you're backend should return success response with HTTP code 200 (OK):
+* When you need to get best face image (avatar) your backend should return success response with HTTP code 200 (OK):
 
 ```javascript
 	"avatarCallbackUrl": "http://localhost/avatar"
@@ -126,17 +126,17 @@ First, you should set an URLs of your backend where callbacks request will be se
 
 | Title |  Description |
 | ------ | ------ |
-|  AvatarCallbackUrl  | URL which will listen HTTP POST method of best face image |
+|  AvatarCallbackUrl  | URL which will listen to HTTP POST method of best face image |
 
 The best face image will be sent to `avatarCallbackUrl` with query-parameters `avatarHash`, `personId`, `projectId`, which contains in `RecognitionEvent`.
-You're backend shoukd return HTTP code 204 (NoContent).
+Your backend should return HTTP code 204 (NoContent).
 
-* If you not needed in best face image just shoukd just return HTTP code 204 (NoContent).
+* If you do not need the best face image, it should return the HTTP code 204 (NoContent).
 
 ![Recognition event](images/RecognitionEvent.png)
 
 #### PersonChanged processing
 
-* You're backend shoukd return HTTP code 204 (NoContent).
+* Your backend should return the HTTP code 204 (NoContent).
 
 ![Person changed](images/PersonChanged.png)
