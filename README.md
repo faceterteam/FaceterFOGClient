@@ -226,6 +226,12 @@ Also, Fog Agent can be launched in the host operating system with the following 
 fogagent --foggerid <your-fogger-id> --nodeid <your-node-id> --secretkey <your-secretkey>
 ```
 
+If the Fog Agent is running in self hosted power mode, you must specify `cameraownerid` instead of the `foggerid` parameter.
+
+```bash
+fogagent --cameraownerid <your-camera-owner-id> --nodeid <your-node-id> --secretkey <your-secretkey>
+```
+
 To change the configuration, you can use
 ```bash
 sudo dpkg-reconfigure fogagent
