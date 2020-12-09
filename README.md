@@ -188,7 +188,7 @@ sudo apt update
 sudo apt install fogagent
 ```
 
-During the installation process, you must select in which mode this node will work, depending on the type of account.
+During the installation process, you must select mode of this node, depending on the type of account.
 
 ![selfminermode request](images/Image11.png)
 
@@ -196,7 +196,7 @@ During installation, you must specify your `foggerid`
 
 ![foggerid request](images/Image5.png)
 
-or `cameraownerid` if you node work on self hosted power mode
+or `cameraownerid` if you node work in self hosted power mode
 
 ![cameraownerid request](images/Image12.png)
 
