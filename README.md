@@ -188,9 +188,17 @@ sudo apt update
 sudo apt install fogagent
 ```
 
+During the installation process, you must select mode of this node, depending on the type of account.
+
+![selfminermode request](images/Image11.png)
+
 During installation, you must specify your `foggerid`
 
 ![foggerid request](images/Image5.png)
+
+or `cameraownerid` if you node work in self hosted power mode
+
+![cameraownerid request](images/Image12.png)
 
 and `nodeid`
 
@@ -218,6 +226,12 @@ Also, Fog Agent can be launched in the host operating system with the following 
 fogagent --foggerid <your-fogger-id> --nodeid <your-node-id> --secretkey <your-secretkey>
 ```
 
+If the Fog Agent is running in self hosted power mode, you must specify `cameraownerid` instead of the `foggerid` parameter.
+
+```bash
+fogagent --cameraownerid <your-camera-owner-id> --nodeid <your-node-id> --secretkey <your-secretkey>
+```
+
 To change the configuration, you can use
 ```bash
 sudo dpkg-reconfigure fogagent
@@ -242,6 +256,22 @@ Click on the Generate button to create a `secretkey` and save it to configure th
 ![Image10](images/Image10.png)
 
 Choose `nodeid` for future identification of this machine. It should be unique alphanumeric value without spaces.
+
+
+If you run fogagent in self hosted power mode. The `cameraownerid` and `secretkey` parameters are located in the cameraowner's account.
+Your `cameraownerid`  is located in the upper right corner.
+
+![Image13](images/Image13.png)
+
+Next, to install the secretkey, click on settings button at the top of the screen.
+
+![Image14](images/Image14.png)
+
+And go to the Secret Key Section.
+
+![Image15](images/Image15.png)
+
+Next, generate and remember the secret key as described above.
 
 **Since version 0.7.0** Fog Agent as part of the Faceter Fog Client is able to download and install all required parts of the Client on its own.
 
