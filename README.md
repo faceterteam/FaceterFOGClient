@@ -149,6 +149,26 @@ sudo apt install nvidia-docker2
 _If you get an error  
 ERROR: for recognition-scorer  Cannot create a container for service recognition-scorer: Unknown runtime specified nvidia_
 
+
+Check the file /etc/docker/daemon.json if it does not contain nvidia runtime lines add them as in the example below.
+
+```
+    "runtimes": {
+        "nvidia": {
+            "path": "/usr/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    }
+```
+Execute:
+```
+sudo pkill -SIGHUP dockerd
+```
+And restart fogagent:
+```
+Sudo systemctl restart fogagent 
+```
+
 _Try to fix this with (learn more at [StackOverflow](https://stackoverflow.com/questions/52865988/nvidia-docker-unknown-runtime-specified-nvidia))_
 
 ```bash
