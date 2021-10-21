@@ -8,13 +8,14 @@ Faceter Fog Client is a software designed to build decentralized computing netwo
 
 1. Linux OS compatible with Debian 9
 2. AMD64 architecture required
-3. Nvidia 10XX graphics card with 4GB+ RAM
-4. CUDA 10+
-5. RAM 12GB+
-6. Storage 18 GB Hard drive space
-7. Linux kernel version 4.9+
-8. Docker CE for Linux 18.06.0+
-9. Python 3.6.7+
+3. CPU with AVX2 instructions support (Intel the fourth generation and newer or Amd Excavator generation and newer)  
+4. Nvidia 10XX graphics card with 4GB+ RAM
+5. CUDA 10+
+6. RAM 12GB+
+7. Storage 18 GB Hard drive space
+8. Linux kernel version 4.9+
+9. Docker CE for Linux 18.06.0+
+10. Python 3.6.7+
 
 ## Faceter Fog Client Installation Guide
 
