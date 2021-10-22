@@ -213,6 +213,14 @@ During the installation process, you must select mode of this node, depending on
 
 ![selfminermode request](images/Image11.png)
 
+If you have selected the SelfHostedPowerMode mode, you can turn on the streaming mode on the video in this case, the video from the camera and some information about the recognition will be available from your host.
+
+![streamingenable request](images/Image16.png)
+
+If Streaming mode is enabled, describe the url by which port 4242 on this host will be accessible from the WAN.
+
+![streamingenable request](images/Image17.png)
+
 During installation, you must specify your `foggerid`
 
 ![foggerid request](images/Image5.png)
