@@ -8,13 +8,14 @@ Faceter Fog Client is a software designed to build decentralized computing netwo
 
 1. Linux OS compatible with Debian 9
 2. AMD64 architecture required
-3. Nvidia 10XX graphics card with 4GB+ RAM
-4. CUDA 10+
-5. RAM 12GB+
-6. Storage 18 GB Hard drive space
-7. Linux kernel version 4.9+
-8. Docker CE for Linux 18.06.0+
-9. Python 3.6.7+
+3. CPU with AVX2 instructions support (Intel the fourth generation and newer or Amd Excavator generation and newer)  
+4. Nvidia 10XX graphics card with 4GB+ RAM
+5. CUDA 10+
+6. RAM 12GB+
+7. Storage 18 GB Hard drive space
+8. Linux kernel version 4.9+
+9. Docker CE for Linux 18.06.0+
+10. Python 3.6.7+
 
 ## Faceter Fog Client Installation Guide
 
@@ -149,6 +150,26 @@ sudo apt install nvidia-docker2
 _If you get an error  
 ERROR: for recognition-scorer  Cannot create a container for service recognition-scorer: Unknown runtime specified nvidia_
 
+
+Check the file /etc/docker/daemon.json if it does not contain nvidia runtime lines add them as in the example below.
+
+```
+    "runtimes": {
+        "nvidia": {
+            "path": "/usr/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    }
+```
+Execute:
+```
+sudo pkill -SIGHUP dockerd
+```
+And restart fogagent:
+```
+Sudo systemctl restart fogagent 
+```
+
 _Try to fix this with (learn more at [StackOverflow](https://stackoverflow.com/questions/52865988/nvidia-docker-unknown-runtime-specified-nvidia))_
 
 ```bash
@@ -191,6 +212,14 @@ sudo apt install fogagent
 During the installation process, you must select mode of this node, depending on the type of account.
 
 ![selfminermode request](images/Image11.png)
+
+If you have selected the SelfHostedPowerMode mode, you can turn on the streaming mode on the video in this case, the video from the camera and some information about the recognition will be available from your host.
+
+![streamingenable request](images/Image16.png)
+
+If Streaming mode is enabled, describe the url by which port 4242 on this host will be accessible from the WAN.
+
+![streamingenable request](images/Image17.png)
 
 During installation, you must specify your `foggerid`
 
